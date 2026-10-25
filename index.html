@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FL-shot – Atur Kecepatan Kedip & Suara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Peringatan: tampil sebelum kedipan atau suara apa pun -->
+  <div id="warning" class="overlay" role="dialog" aria-modal="true" aria-labelledby="warn-title">
+    <div class="warn-box">
+      <h2 id="warn-title">Peringatan keras sebelum mulai</h2>
+      <ul>
+        <li><strong>Kedipan layar:</strong> halaman ini berkedip hitam-putih. Kedipan bisa memicu kejang pada penderita epilepsi fotosensitif, serta sakit kepala dan pusing. Jangan lanjut jika kamu atau orang di sekitarmu punya riwayat itu.</li>
+        <li><strong>Suara:</strong> suaranya sengaja mengganggu dan bisa keras. Kecilkan volume perangkatmu dulu dan hindari headphone atau earphone.</li>
+        <li><strong>Aman secara bawaan:</strong> kedipan dimulai pelan (2 kali per detik) dan volume 15%. Batas kedipan cepat terkunci sampai kamu membukanya sendiri.</li>
+        <li><strong>Berhenti kapan saja:</strong> tekan tombol Berhenti atau tombol Esc. Kedipan juga berhenti otomatis kalau tab ditinggalkan.</li>
+        <li>Jangan dipakai untuk mengagetkan orang lain tanpa sepengetahuan mereka.</li>
+      </ul>
+      <label class="check">
+        <input type="checkbox" id="agree"> Saya sudah membaca dan mengerti semua peringatan ini
+      </label>
+      <button id="enter" disabled>Lanjut ke FL-shot</button>
+    </div>
+  </div>
+
+  <main>
+    <header>
+      <h1>FL-shot</h1>
+      <p>FireLight-shot: layar berkedip hitam ke putih dengan suara mengganggu. Atur seberapa cepat kedipannya dan seberapa berisik suaranya.</p>
+    </header>
+
+    <div class="stage" id="stage" role="img" aria-label="Area kedipan hitam-putih"></div>
+
+    <section class="panel" aria-label="Pengaturan">
+      <div class="row">
+        <button id="play" type="button">Mulai</button>
+        <button id="stop" type="button" class="stop" disabled>Berhenti (Esc)</button>
+      </div>
+
+      <div class="control">
+        <label for="speed">Kecepatan kedip <output id="speedOut">2.0</output> kali/detik</label>
+        <input type="range" id="speed" min="0" max="100" value="50">
+        <small id="speedHint">Mode aman: maksimum 3 kali per detik.</small>
+      </div>
+
+      <label class="check risk">
+        <input type="checkbox" id="unlock"> Buka batas cepat (sampai 10 kali/detik). Berisiko memicu kejang pada penderita epilepsi fotosensitif.
+      </label>
+
+      <div class="control">
+        <label for="volume">Kebisingan suara <output id="volumeOut">15</output>%</label>
+        <input type="range" id="volume" min="0" max="100" value="15">
+        <small id="volHint">Volume rendah.</small>
+      </div>
+
+      <button id="mute" type="button" aria-pressed="false">Matikan suara</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
